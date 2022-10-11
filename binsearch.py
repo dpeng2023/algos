@@ -2,6 +2,10 @@
 Given:  Sorted List of numbers
 Find:   Index Position of specified number, or return -1 if not found
 Use:    Recursive and Iterative Binary Search
+- divide into half intervals for search
+- Time Complexity is:  O(logN) due to divide-conquer
+- Space Complexity is:  O(1) due to no auxiliary space
+Reference:  https://www.geeksforgeeks.org/binary-search/
 """
 
 # TEST#1:  [2, 5, 6, 7, 9], Find 7; Result 3
@@ -32,12 +36,14 @@ def ibinsearch(data: list, start: int, end: int, num: int) -> int:
     return -1
 
 
+
+# NOTE recursion signature where end is inclusive of data
 def rbinsearch(data: list, start: int, end: int, num: int) -> int:
 
     # test for termination case
     if end >= start:
 
-        # find mid using integer division
+        # find mid using integer division RELATIVE to start
         mid = start + (end - start)//2
         print("Start, End, Mid:  ", start, end, mid)
 
